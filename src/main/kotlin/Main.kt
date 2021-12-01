@@ -4,7 +4,17 @@ fun main(){
     val numbers  = mutableListOf<Int>()
     File("src/content.txt").forEachLine { numbers.add(it.toInt()) }
 
-    val numberOfIncrease = determineNumberOfIncreasedMeasurements(numbers)
+    val numberListOfThreeWindowSums = mutableListOf<Int>()
+
+    for( index in numbers.indices){
+
+        if ( (index + 3) > numbers.size){
+            break
+        }
+
+        numberListOfThreeWindowSums.add( numbers[index] + numbers[index + 1] + numbers[index + 2])
+    }
+    val numberOfIncrease = determineNumberOfIncreasedMeasurements(numberListOfThreeWindowSums)
 
     println("number of increases: $numberOfIncrease")
 }
